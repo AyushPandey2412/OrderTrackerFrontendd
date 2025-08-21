@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import axios from "axios";
-
+const url ="https://ordertrackerbackend-1hho.onrender.com"
 export default function EditOrderModal() {
   const { id } = useParams();
   const navigate = useNavigate();
@@ -28,7 +28,7 @@ export default function EditOrderModal() {
   useEffect(() => {
     const fetchOrder = async () => {
       try {
-        const res = await axios.get(`http://localhost:5000/orders/${id}`);
+        const res = await axios.get(`${url}/orders/${id}`);
         const orderData = {
           ...res.data,
           order_date: res.data.order_date ? new Date(res.data.order_date).toISOString().split('T')[0] : '',

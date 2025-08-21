@@ -10,6 +10,7 @@ import { Link } from "react-router-dom";
 import * as XLSX from "xlsx";
 import { saveAs } from "file-saver";
 import OrdersKPI from "./OrdersKPI";
+const url ="https://ordertrackerbackend-1hho.onrender.com"
 export default function OrdersPage() {
   const [orders, setOrders] = useState([]);
   const [gridApi, setGridApi] = useState(null);
@@ -31,7 +32,7 @@ export default function OrdersPage() {
   // Fetch orders
   const fetchOrders = async () => {
     try {
-      const res = await axios.get("http://localhost:5000/orders");
+      const res = await axios.get(`${url}/orders`);
       setOrders(res.data);
     } catch (err) {
       console.error("Error fetching orders:", err);
@@ -88,7 +89,7 @@ export default function OrdersPage() {
 
     try {
       await Promise.all(
-        idsToDelete.map((id) => axios.delete(`http://localhost:5000/orders/${id}`))
+        idsToDelete.map((id) => axios.delete(`${url}/orders/${id}`))
       );
       setOrders((prev) => prev.filter((order) => !idsToDelete.includes(order.id)));
     } catch (err) {
@@ -113,7 +114,7 @@ export default function OrdersPage() {
   const handleDeleteOrder = async (id) => {
     if (!window.confirm("Are you sure you want to delete this order?")) return;
     try {
-      await axios.delete(`http://localhost:5000/orders/${id}`);
+      await axios.delete(`${url}/orders/${id}`);
       setOrders((prev) => prev.filter((order) => order.id !== id));
     } catch (err) {
       console.error("Error deleting order:", err);

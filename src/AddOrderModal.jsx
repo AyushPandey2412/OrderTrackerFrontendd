@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import axios from "axios";
-
+const url="https://ordertrackerbackend-1hho.onrender.com"
 export default function AddOrderModal() {
   const navigate = useNavigate();
   const {
@@ -30,7 +30,7 @@ export default function AddOrderModal() {
         order_date: new Date(data.order_date).toISOString(),
       };
       
-      await axios.post("http://localhost:5000/orders", formattedData);
+      await axios.post(`${url}/orders`, formattedData);
       
      
       const successNotification = document.createElement('div');

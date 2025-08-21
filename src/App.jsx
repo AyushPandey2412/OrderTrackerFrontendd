@@ -23,13 +23,13 @@ function App() {
   return (
     <Router>
       <Routes>
-        {/* Redirect root to orders list */}
+        
         <Route path="/" element={<Navigate to="/orders" />} />
 
-        {/* Orders list */}
+        
         <Route path="/orders" element={<OrdersPage />} />
 
-        {/* Create new order */}
+        
         <Route path="/orders/new" element={<AddOrderModal />} />
         <Route path="/orders/:id/edit" element={<EditOrderModal />} />
       </Routes>

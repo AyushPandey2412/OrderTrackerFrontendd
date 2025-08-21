@@ -3,7 +3,7 @@
 
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-
+const url ="https://ordertrackerbackend-1hho.onrender.com"
 export default function OrdersKPI() {
   const [dashboard, setDashboard] = useState({
     totalOrders: 0,
@@ -18,7 +18,7 @@ export default function OrdersKPI() {
   useEffect(() => {
     const fetchDashboard = async () => {
       try {
-        const res = await axios.get("http://localhost:5000/orders/dashboard");
+        const res = await axios.get(`${url}/orders/dashboard`);
         setDashboard(res.data);
       } catch (err) {
         console.error("Error fetching dashboard:", err);
