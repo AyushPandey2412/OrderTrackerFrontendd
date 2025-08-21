@@ -63,7 +63,7 @@ export default function EditOrderModal() {
         order_date: new Date(data.order_date).toISOString(),
       };
       
-      await axios.put(`http://localhost:5000/orders/${id}`, formattedData);
+      await axios.put(`${url}/orders/${id}`, formattedData);
       
   
       const successNotification = document.createElement('div');
@@ -77,12 +77,12 @@ export default function EditOrderModal() {
       
       navigate("/orders");
     } catch (err) {
-      console.error("❌ Error updating order:", err);
+      console.error("Error updating order:", err);
       
 
       const errorNotification = document.createElement('div');
       errorNotification.className = 'fixed top-4 right-4 bg-red-500 text-white px-6 py-3 rounded-lg shadow-lg z-50 animate-pulse';
-      errorNotification.innerHTML = '❌ Failed to update order. Please try again.';
+      errorNotification.innerHTML = 'Failed to update order. Please try again.';
       document.body.appendChild(errorNotification);
       
       setTimeout(() => {
