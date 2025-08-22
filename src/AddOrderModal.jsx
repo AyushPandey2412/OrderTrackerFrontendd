@@ -365,7 +365,6 @@ export default function AddOrderModal() {
     register,
     handleSubmit,
     formState: { errors, isSubmitting },
-    watch,
   } = useForm({
     defaultValues: {
       customer_name: "",
