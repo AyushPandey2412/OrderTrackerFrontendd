@@ -11,6 +11,7 @@ import * as XLSX from "xlsx";
 import { saveAs } from "file-saver";
 import OrdersKPI from "./OrdersKPI";
 const url ="https://ordertrackerbackend-1hho.onrender.com"
+
 export default function OrdersPage() {
   const [orders, setOrders] = useState([]);
   const [gridApi, setGridApi] = useState(null);
@@ -44,6 +45,7 @@ export default function OrdersPage() {
   }, []);
 
   // Inline edit for Grid
+
   const onCellValueChanged = useCallback(async (params) => {
     const { id } = params.data;
     const field = params.colDef.field;
@@ -63,16 +65,6 @@ export default function OrdersPage() {
       console.error("Error patching order:", err);
     }
   }, []);
-
-
-
-
-
-
-
-
-
-
 
 
   // Bulk delete
@@ -96,18 +88,6 @@ export default function OrdersPage() {
       console.error("Error deleting orders:", err);
     }
   };
-
-
-
-
-
-
-
-
-
-
-
-
 
 
   // Single delete
@@ -233,6 +213,8 @@ const handleExportCSV = () => {
   });
 
 
+
+  
 
 
 
