@@ -375,9 +375,7 @@ export default function AddOrderModal() {
     },
   });
 
-  const watchedAmount = watch("total_amount");
 
-  
   const onSubmit = async (data) => {
     try {
       
