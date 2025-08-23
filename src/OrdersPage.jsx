@@ -10,7 +10,8 @@ import { Link } from "react-router-dom";
 import * as XLSX from "xlsx";
 import { saveAs } from "file-saver";
 import OrdersKPI from "./OrdersKPI";
-const url ="https://ordertrackerbackend-1hho.onrender.com"
+// const url ="https://ordertrackerbackend-1hho.onrender.com"
+const url = "http://localhost:5000";
 
 export default function OrdersPage() {
   const [orders, setOrders] = useState([]);
@@ -33,7 +34,7 @@ export default function OrdersPage() {
   // Fetch orders
   const fetchOrders = async () => {
     try {
-      const res = await axios.get(`${url}/orders`);
+      const res = await axios.get(`/orders`);
       setOrders(res.data);
     } catch (err) {
       console.error("Error fetching orders:", err);
@@ -211,16 +212,6 @@ const handleExportCSV = () => {
       order.status.toLowerCase().includes(searchQuery.toLowerCase());
     return matchStatus && matchSearch;
   });
-
-
-
-  
-
-
-
-
-
-
 
 
 
@@ -663,7 +654,6 @@ const handleExportCSV = () => {
               gridOptions={gridOptions}
               onGridReady={(params) => {
                 setGridApi(params.api);
-                // Force column sizing
                 setTimeout(() => {
                   params.api.sizeColumnsToFit();
                 }, 100);
