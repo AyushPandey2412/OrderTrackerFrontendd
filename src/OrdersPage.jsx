@@ -52,7 +52,7 @@ export default function OrdersPage() {
     const newValue = params.newValue;
 
     try {
-      await axios.patch(`http://localhost:5000/orders/${id}`, {
+      await axios.patch(`${url}/orders/${id}`, {
         [field]: newValue,
       });
 

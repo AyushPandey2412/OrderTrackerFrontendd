@@ -366,8 +366,7 @@ export default function EditOrderModal() {
   const { id } = useParams();
   const navigate = useNavigate();
 
-
-  const {
+const {
     register,
     handleSubmit,
     formState: { errors, isSubmitting },
